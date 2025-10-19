@@ -1,0 +1,82 @@
+\section{Argument}
+
+\vW\ points out that, in order to determine the momentum of the particle from 
+its position on the screen, one must know the free path length precisely, which 
+requires the use of narrow diaphragms of width $d$. Yet, if the diaphragms are 
+too narrow, diffraction appears, introducing an unavoidable spread in the 
+transverse coordinate $y$. Thus, the spread in $y$ at the screen cannot be 
+smaller than the slit opening:
+\[
+\Delta y \geq d.
+\]
+Since the deflection $EF = y$ is the measure of the momentum, the slit also 
+produces a spread in transverse momentum $\Delta p_y$ due to diffraction, which 
+in turn leads to a spread in vertical displacement after traveling the distance 
+$L$:
+\[
+\Delta y \geq \frac{\Delta p_y}{mv} \, L.
+\]
+Narrowing the slit $d$ increases the momentum spread $\Delta p_y$, according to 
+the basic uncertainty condition
+\[
+d \cdot \Delta p_y \geq h.
+\]
+Multiplying the two inequalities and inserting this condition gives
+\[
+(\Delta y)^2 \geq \frac{h}{mv} \, L. \tag{1}
+\]
+This shows that restricting the beam’s transverse position inevitably produces a 
+corresponding uncertainty that enforces the Heisenberg principle. The figure 
+illustrates this: the more one attempts to collimate the beam tightly at $D$, 
+the more it spreads out by the time it reaches the detector at $E\!-\!F$.  
+
+---
+
+After establishing that diffraction at the slit enforces a minimal transverse 
+uncertainty, \vW\ extends the analysis to the longitudinal motion of the 
+particle, i.e.\ to $p_x$. Because the vertical displacement $y$ depends on the 
+velocity $v$, the uncertainty in $y$ translates into an uncertainty in $v$. In 
+a uniform force field, the deflection is proportional to $1/v^2$, since the 
+vertical displacement follows the free-fall law 
+\[
+y = \tfrac{1}{2} a t^2,
+\]
+with the flight time given by $t = L/v$. Applying logarithmic differentiation 
+and taking absolute values gives
+\[
+\frac{\Delta y}{y} = \frac{2 \Delta v}{v}. \tag{3}
+\]
+
+From this it follows, on the one hand, that there is an uncertainty in the 
+longitudinal momentum,
+\[
+\Delta p_x = m \, \Delta v,
+\]
+and, on the other hand, that the determination of the $x$--coordinate,
+\[
+x = v t,
+\]
+is also uncertain. If $v$ is uncertain, then $t = L/v$ is likewise uncertain, 
+so the total uncertainty in $x$ must include two contributions:
+\[
+\Delta x = v \Delta t + t \Delta v 
+          = \frac{L}{v} \Delta v + \frac{L}{v} \Delta v 
+          = \frac{2L}{v} \, \Delta v.
+\]
+Hence,
+\[
+\Delta p_x \, \Delta x = (m \Delta v)\!\left(\frac{2 L}{v} \Delta v\right) 
+= \frac{2 m L}{v} \, (\Delta v)^2.
+\]
+
+---
+
+Finally, combining relation (3) with the transverse inequality (1) yields
+\[
+\Delta p_x \, \Delta x \;\geq\; \frac{L^2}{y^2} \, h.
+\]
+
+Thus the uncertainty in velocity propagates into both momentum and longitudinal 
+position, and together with diffraction effects it ensures that the Heisenberg 
+uncertainty principle is preserved in both transverse and longitudinal 
+directions.
