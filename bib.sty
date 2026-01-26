@@ -1,0 +1,839 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                            %
+%      BIBLATEX      												 %
+%                                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{filecontents}{biblatex-dm.cfg}
+\DeclareDatamodelEntrytypes{sb}
+\DeclareDatamodelEntrytypes{aea}
+\DeclareDatamodelFields[type=field,datatype=literal]{callnr, journaltitleaddon}
+\DeclareDatamodelFields[type=field,datatype=literal]{callnr, journaltitletorreaddon}
+\DeclareDatamodelEntryfields[sb,aea]{callnr, journaltitleaddon}
+%\DeclareFieldFormat{callnr}{{\cite[#1]{EA}}}
+%\DeclareFieldFormat{journaltitleaddon}{{#1}}
+\end{filecontents}
+%\DeclareDatamodelFields[type=field,datatype=literal]{jotiaon}
+
+
+%\usepackage[xref=true,sorting=nyt,idemtracker=true,style=footnote-dw,backend=biber,editionstring=true,nopublisher=true,pageref=true,origfieldsformat=brackets,doi=false,shorthandibid=false,annotation=true]{biblatex}
+
+\usepackage{bigfoot}
+\DeclareNewFootnote{Ex}[alph] 
+\usepackage{endnotes}
+
+\usepackage[
+  backend=biber,
+  autopunct=true,
+  style=verbose-note,
+  citetracker=true,
+  autocite=footnote,
+  doi=false,
+  url=false % We keep this as footnote but redirect the command
+]{biblatex}
+
+% Redirect the footnote command to endnote for the whole document
+\makeatletter
+\renewcommand{\mkbibfootnote}[1]{\endnote{#1}}
+\makeatother
+
+\DefineBibliographyStrings{english}{
+  seenote = {ref\adddot},
+}
+
+\makeatletter
+% Anchor the label at the first citation
+\AtEveryCitekey{%
+  \ifcsname r@note:\thefield{entrykey}\endcsname
+    % do nothing if label already exists
+  \else
+    \label{note:\thefield{entrykey}}%
+  \fi
+}
+
+\renewbibmacro*{cite:short}{%
+  \printnames{labelname}%
+  \setunit*{\addcomma\space}%
+  \printfield[citetitle]{labeltitle}%
+  \setunit*{\addspace}%
+  \printtext[parens]{%
+    \bibstring{seenote}\addspace
+    \ifcsname r@note:\thefield{entrykey}\endcsname
+      {\ref*{note:\thefield{entrykey}}}%
+    \else
+      {\textbf{??}}%
+    \fi
+  }%
+}
+\makeatother
+
+%\usepackage[
+%  authordate,
+%  backend=biber,
+%  bibencoding=utf8,
+%  cmslos=false, 
+%  backref=false,
+%  shorthandfull,
+%  ibidtracker=context, % or 'constrict' if you prefer stricter context matching
+%  doi=false,
+%  isbn=false,
+%  giveninits=false,
+%  uniquename=false,
+%  minbibnames=1,
+%  maxbibnames=2,
+%  citereset=section,
+%date=year
+%]{biblatex-chicago}
+
+
+
+%\usepackage[authordate,backend=biber,bibencoding=utf8,cmslos=false,shorthandfull,ibidtracker=true,doi=false,isbn=false,giveninits=false,uniquename=false,minbibnames =1,ibidtracker=constrict,maxbibnames=2,citereset=section]{biblatex-chicago}
+
+%,noibid,
+%\DeclareSourcemap{
+%  \maps[datatype=bibtex]{
+%    \map{
+%      \step[fieldsource=entrykey, match=ASWB,fieldset=shorthand, null]
+%      \step[fieldsource=options,match={skipbib=true},replace={skipbib=false}]
+%    }
+%  }
+%}
+
+
+
+%\DeclareSourcemap{
+%  \maps[datatype=bibtex]{
+%    \map{
+%      \step[fieldset=shorthand, null]
+%      \step[fieldsource=options,match={skipbib=true},replace={skipbib=false}]
+%    }
+%  }
+%}
+
+
+\setlength{\bibitemsep}{0em}
+\DeclareFieldFormat{postnote}{#1}% no postnote prefix in "normal" citation commands
+\DeclareFieldFormat{multipostnote}{#1}% no postnote prefix in "multicite" commands
+%\DeclareFieldFormat{pages}{#1}
+
+%\renewcommand*{\compcitedelim}{\addsemicolon\addspace}
+%\renewcommand*{\postnotedelim}{\addcomma\addspace}
+%\renewcommand*{\multicitedelim}{\addsemicolon\space}
+%\renewcommand*{\textcitedelim}{\addcomma\addspace}
+%\renewcommand*{\nameyeardelim}{\addcomma\addspace}
+
+%\DeclareDelimFormat{postnotedelim}{\addcomma\space}
+%\DeclareFieldFormat{postnote}{#1}
+%\DeclareDelimFormat{multipostnotedelim}{\addcomma\space}
+%\DeclareDelimFormat{compcitedelim}{\addcomma\space}
+%\DeclareDelimFormat{multicitedelim}{\addcomma\space}
+%\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
+
+
+%\renewbibmacro*{textcite}{% 
+%\ifnameundef{labelname} 
+%{\iffieldundef{shorthand} 
+%{\usebibmacro{cite:label}% 
+%\setunit{% 
+%\global\booltrue{cbx:parens}% 
+%\addspace\bibopenparen}% 
+%\ifnumequal{\value{citecount}}{1} 
+%{\usebibmacro{prenote}} 
+%{}% 
+%\usebibmacro{cite:labelyear+extrayear}} 
+%{\usebibmacro{cite:shorthand}}} 
+%{\printnames{labelname}% 
+%\setunit{% 
+%\global\booltrue{cbx:parens}% 
+%\addspace\bibopenparen}% 
+%\ifnumequal{\value{citecount}}{1} 
+%{\usebibmacro{prenote}} 
+%{}% 
+%\usebibmacro{citeyear}}}
+
+\DeclareLabeldate{%
+  \field{date}
+  \field{year}
+  \field{eventdate}
+  \field{origdate}
+  \field{urldate}
+  %\literal{nodate}
+}
+
+
+\DeclareSortingTemplate{nymt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{month}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{0000}
+  }
+}
+
+
+\renewbibmacro*{citeindex}{%
+\ifciteindex
+{\indexnames{labelname}}%
+{}}
+
+
+\renewbibmacro*{bibindex}{%
+\ifbibindex
+{\indexnames{author}%
+\indexnames{editor}%
+\indexnames{introduction}%
+\indexnames{forward}%
+\indexnames{translator}%
+\indexnames{commentator}%
+}%
+{}}%
+
+
+\DefineBibliographyStrings{american}{%
+  andothers ={et\addabbrvspace al\adddot},
+}
+
+\renewbibmacro*{cite:shorthand}{%
+  \printtext[bibhyperref]{\printfield{shorthand}}%
+  \usebibmacro{cite:reinit}}
+
+\usepackage{xpatch}
+
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\DeclareBibliographyAlias{philsci}{electronic}
+\DeclareBibliographyAlias{stanford}{incollection}
+\DeclareBibliographyAlias{incollectionr}{incollection}
+%\DeclareBibliographyAlias{inbookr}{inbook}
+%\DeclareBibliographyAlias{inbook}{incollection}
+%\DeclareBibliographyAlias{proceedings}{article}
+%\DeclareBibliographyAlias{newspaper}{article}
+
+\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
+\DeclareFieldFormat{titleaddon}{\MakeSentenceCase*{#1}}
+
+%\DefineBibliographyStrings{english}{%
+%nodate = {},
+%}c
+%\DefineBibliographyStrings{german}{%
+%nodate = {},
+%}
+
+%\DeclareFieldFormat{titlecase}{\MakeTitleCase*{#1}}
+%\DeclareFieldFormat{titleaddon}{\MakeTitleCase*{#1}}
+
+
+\newbibmacro*{jtao}{\printfield{journaltitleaddon}}
+
+\newbibmacro{cnr}{\cite{EA}, \printfield{callnr}}
+
+\DeclareBibliographyDriver{sb}{%
+\usebibmacro{bibindex}%
+%\usebibmacro{begentry}%
+\usebibmacro{author/editor}%
+\setunit{\labelnamepunct}\newblock
+\usebibmacro{title}%
+\newunit%
+\usebibmacro{journal}%
+\newunit\addcomma\space%
+%\printfield{journaltitleaddon}%
+\addcomma\space%
+\printfield{pages}%
+\newunit\newblock
+\printfield{addendum}%
+\usebibmacro{related}%
+\usebibmacro{finentry}%
+}
+
+
+\DeclareBibliographyDriver{newspaper}{%
+\usebibmacro{bibindex}%
+%\usebibmacro{begentry}%
+\usebibmacro{author/editor}%
+\setunit{\labelnamepunct}\newblock
+\usebibmacro{title}
+%\printtext[title]{\mkbibquote{%
+%    \printfield{title}%
+%    \setunit{\subtitlepunct}%
+%    \printfield{subtitle}}}
+%    \setunit{\adddot}  
+%   \newunit\newblock
+%    \printfield{titleaddon}
+%     \newunit\newblock
+\printfield{journaltitle}\newunit\newblock
+\newunit%
+  {	%
+     	\printfield{month}\setunit*{\adddot\space}%
+    	\printfield{day}\setunit*{\addcomma\space}%
+	\printfield{year}\setunit*{\adddot}}%
+  \newunit\newblock
+%\usebibmacro{date}\newunit\newblock
+\printfield{addendum}%
+\usebibmacro{finentry}%
+ }
+
+%\newblock
+%\usebibmacro{related}
+%\usebibmacro{finentry}
+
+
+
+
+
+%\renewbibmacro{finentry}{\printfield{callnr}\finentry}
+
+
+
+\DeclareBibliographyDriver{aea}{%
+\usebibmacro{bibindex}%
+%\usebibmacro{begentry}%
+\usebibmacro{author/editor}
+\setunit{\labelnamepunct}\newblock
+\printfield{title}%
+\newunit\newblock
+%\usebibmacro{finentry}
+\usebibmacro{cnr}%
+\newunit\newblock
+\printfield{addendum}%
+ \usebibmacro{finentry}%
+}
+
+
+
+
+%\DeclareBibliographyDriver{stanford}{%
+%\usebibmacro{author}
+%\setunit{\labelnamepunct}\newblock
+%\printtext[title]{\mkbibquote{%
+%    \printfield{title}%
+%    \setunit{\subtitlepunct}%
+%    \printfield{subtitle}}}
+%    \setunit{\adddot}  
+%   \newunit\newblock
+%    \printfield{titleaddon}
+%     \newunit\newblock
+%\printfield{booktitle}%
+%\newunit
+%\printfield{booksubtitle},
+%\printfield{url}%
+%\newunit\newblock
+%\printfield{addendum}
+%\newblock
+%\usebibmacro{finentry}
+% }
+
+
+
+
+
+
+\DeclareFieldFormat[sb]{title}{\mkbibquote{#1}}  
+\DeclareFieldFormat[sb]{subtitle}{#1}  
+
+\DeclareFieldFormat[newspaper]{title}{\mkbibquote{#1}}  
+\DeclareFieldFormat[newspaper]{subtitle}{#1}  
+
+
+%
+%\DeclareBibliographyAlias{sb}{article}
+
+
+%\DeclareFieldFormat{titleaddoncase}{\MakeSentenceCase*{#1}}
+
+%\xpatchbibmacro{date+extrayear}{%
+%  \printtext[parens]%
+%}{%
+%  \setunit{\addperiod\space}%
+%  \printtext%
+%}{}{}
+%
+
+\renewbibmacro*{date}{%
+  \printdate
+  \iffieldundef{origyear}{%
+  }{%
+    \setunit*{\addspace}%
+    \printtext[parens]{\printorigdate}%
+  }%
+}
+
+
+\AtEveryBibitem{\clearfield{labelmonth}}
+\AtEveryCitekey{\clearfield{labelmonth}}
+\AtEveryBibitem{\clearfield{labelday}}
+\AtEveryCitekey{\clearfield{labelday}}
+%
+
+%
+
+
+
+\AtEveryBibitem{
+
+%\clearfield{month}
+%\clearfield{day}
+ \clearfield{labelmonth}
+ \clearfield{labelday}
+%  \clearlist{language}
+%  \clearfield{note}
+%  \clearfield{file}
+
+%  \ifentrytype{book}{\clearfield{number} \clearfield{series}}{}
+
+  \ifentrytype{aea}{\clearfield{number} \clearfield{series} \clearfield{month} \clearfield{day}}{}  
+  \ifentrytype{sb}{\clearfield{number} \clearfield{series} \clearfield{month} \clearfield{day}}{}  
+  \ifentrytype{book}{\clearfield{number} \clearfield{series} \clearfield{month} \clearfield{day}}{}
+  \ifentrytype{article}{\clearfield{number} \clearfield{month} \clearfield{day}}{}
+  \ifentrytype{collection}{\clearfield{number} \clearfield{series} \clearfield{month} \clearfield{day}}{}
+   \ifentrytype{incollection}{\clearfield{number} \clearfield{series} \clearfield{month} \clearfield{day}}{}
+    \ifentrytype{incollectionr}{\clearfield{number} \clearfield{series} \clearfield{month} \clearfield{day}}{}
+  \ifentrytype{inbook}{\clearfield{number} \clearfield{series} \clearfield{month} \clearfield{day}}{}
+    \ifentrytype{inbookr}{\clearfield{number} \clearfield{series} \clearfield{month} \clearfield{day}}{}
+  
+  %\ifentrytype{collection}{\clearfield{number} \clearfield{series}}
+%  \ifentrytype{collection}{\clearfield{number} \clearfield{series}}
+%  \ifentrytype{incollection}{\clearfield{number} \clearfield{series}}
+%  \ifentrytype{incollectionr}{\clearfield{number} \clearfield{series}}
+  }
+
+
+
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}\unspace}
+  }
+
+
+
+%\renewbibmacro{in:}{%
+%  \ifentrytype{sb}{}{\printtext{\bibstring{in}\intitlepunct\xspace}}}
+
+
+
+
+%\renewbibmacro{in:}{%
+%  \ifentrytype{proceedings}{}{\printtext{\bibstring{in}\intitlepunct\xspace}}}
+
+
+%\DeclareSourcemap{
+%  \maps[datatype=bibtex]{
+%    \map{
+%      \step[fieldset=shorthand, null]
+%      \step[fieldsource=options,match={skipbib=true},replace={skipbib=false}]
+%    }
+%  }
+%}
+%
+
+
+
+
+
+
+
+%hidden fields	
+	
+%start sorting	
+\DeclareSortingTemplate{nymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortdate}
+    \field{year}
+  }
+  \sort{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{00}
+  }
+  \sort{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{00}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{0000}
+  }
+}	
+		
+ %end sorting		
+\addbibresource{biblatex.bib}
+\addbibresource{cvb.bib}
+\addbibresource{cvbconf.bib}
+%\addbibresource[location=remote]{https://www.bibsonomy.org/bib/user/marcogiovanelli}
+
+\renewcommand*{\bibfont}{\footnotesize}
+
+
+\DeclareCiteCommand{\citefulltitle}
+{\boolfalse{citetracker}%
+\boolfalse{pagetracker}%
+\usebibmacro{prenote}}
+{\indexfield{indextitle}%
+\printtext[citetitle]{%
+\printfield[noformat]{title}%
+\iffieldundef{subtitle}{}{\subtitlepunct}%
+\printfield[noformat]{subtitle}}}%
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+
+
+\DeclareCiteCommand{\citetra}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \usebibmacro{journal}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citejournal}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \usebibmacro{journal}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+  
+%  \DeclareCiteCommand{\citepages}
+%  {\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%    \usebibmacro{pages}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citebooktitle}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \usebibmacro{booktitle}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeintitle}% Based on \citetitle from biblatex.def
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {}
+     {}%
+   \iffieldundef{journaltitle}
+     {\iffieldundef{booktitle}
+        {\iffieldundef{maintitle}
+          {\printfield[citetitle]{labeltitle}}% Behave like \citetitle if no "main" title
+          {\printtext[maintitle]{\printfield[titlecase]{maintitle}}}}
+        {\printtext[booktitle]{\printfield[titlecase]{booktitle}}}}
+     {\printtext[journaltitle]{\printfield[titlecase]{journaltitle}}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citetitlec}
+  {\usebibmacro{prenote}}
+  {\iffieldundef{shorttitle}{\q{\thefield{title},}}{\thefield{shorttitle}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citetitlec*}
+  {\usebibmacro{prenote}}
+  {\thefield{title}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citesubtitle}
+  {\usebibmacro{prenote}}
+  {\thefield{subtitle}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+  
+\usepackage{xargs} 
+\newcommandx{\citepages}[2][1=]{#1}
+\newcommandx{\citepagesp}[2][1=]{(#1)}
+\newcommandx{\citepa}[2][1=]{#1}
+\newcommandx{\citepap}[2][1=]{(#1)}
+
+\makeatletter
+\let\passifpages\@firstofone
+\NumCheckSetup{\let\passifpages\@gobble}
+\makeatother
+
+\newcommand*{\me}{\IfLanguageName{ngerman}{\passifpages{; meine Hervorhebung}}{\passifpages{; my emphasis}}}
+
+\newcommand*{\sm}{\IfLanguageName{ngerman}{\passifpages{; meine Hervorhebung}}{\passifpages{; slightly modified}}}
+
+\newcommand{\tm}{\passifpages{; translation modified}}	
+
+\DefineBibliographyStrings{american}{sequens={f.},sequentes={ff.}}
+% Einfügen mit \psq bzw. \psqq
+
+% Kein Abstand vor "f" und "ff"
+\renewcommand*{\sqspace}{}
+
+\newcommand{\psq}{\sqspace{}\psqstring}
+\newcommand{\psqq}{\sqspace{}\psqstring}
+
+
+
+
+%\csdef{relateddelim:alsoin}{\addperiod\space}
+
+%\ExecuteBibliographyRelatedOptions[classictext]{skipbib=true}
+
+\renewcommand*\relateddelim{\addsemicolon\addspace}
+
+%\renewcommand*\relateddelim{\addsemicolon\addspace}
+%\csdef{relateddelim:alsoin}{\addperiod\space}
+
+\newbibmacro*{related:reprintin}[1]{%
+  \entrydata{#1}{%
+    \setunit{\labelnamepunct}%
+\usebibmacro{booktitle}
+\clearfield{author}
+\printfield{journaltitle}
+%\ifentrytype{article}{\printfield{volume}}{}
+\printfield{volume}\addcomma\space
+%    \printfield{booktitle}
+%    \setunit{\subtitlepunct}%
+%    \printfield{booksubtitle}%
+%    \setunit{\addcomma\space}
+     \usebibmacro{byeditor+others}
+     \printlist{location}%
+    \iflistundef{publisher}
+      {\setunit*{\addcomma\space}}
+      {\setunit*{\addcolon\space}}%
+    \printlist{publisher}%
+    \setunit*{\addcomma\space}%
+    \usebibmacro{date}\setunit{\addcomma\space}
+    \printfield{pages}}}
+
+\newbibmacro*{related:alsoin}[1]{\entrydata{#1}{
+\usebibmacro{booktitle}
+\printfield{journaltitle}
+%\ifentrytype{article}{\printfield{volume}}{}
+\printfield{volume}\addcomma\space
+%\usebibmacro{volume+number+eid}
+%    \printfield{booktitle}
+%    \setunit{\subtitlepunct}%
+%    \printfield{booksubtitle}%
+%    \setunit{\addcomma\space}
+     \usebibmacro{byeditor+others}
+    \printlist{location}%
+    \iflistundef{publisher}
+      {\setunit*{\addcomma\space}}
+      {\setunit*{\addcolon\space}}%
+    \printlist{publisher}%
+    \setunit*{\addcomma\space}%
+    \usebibmacro{date}
+    \setunit{\addcomma\space}
+   %
+     \printfield{pages}}}
+
+
+\newbibmacro*{related:engtr}[1]{\entrydata{#1}{
+\usebibmacro{booktitle}
+\printfield{journaltitle}
+%\ifentrytype{article}{\printfield{volume}}{}
+\printfield{volume}\addcomma\space
+%\usebibmacro{volume+number+eid}
+%    \printfield{booktitle}
+%    \setunit{\subtitlepunct}%
+%    \printfield{booksubtitle}%
+%    \setunit{\addcomma\space}
+     \usebibmacro{byeditor+others}
+    \printlist{location}%
+    \iflistundef{publisher}
+      {\setunit*{\addcomma\space}}
+      {\setunit*{\addcolon\space}}%
+    \printlist{publisher}%
+    \setunit*{\addcomma\space}%
+    \usebibmacro{date}
+    \setunit{\addcomma\space}
+   %
+     \printfield{pages}}}
+
+
+%{\addcomma\space}
+%    {\adddot\par}
+
+
+\NewBibliographyString{reprintin}
+\DefineBibliographyStrings{english}{reprintin = {Repr.~in}}
+\DefineBibliographyStrings{german}{reprintin = {Nachdr.~in}}
+
+\NewBibliographyString{alsoin}
+\DefineBibliographyStrings{english}{alsoin = {Also pub.~in}}
+\DefineBibliographyStrings{german}{alsoin = {Auch~in}}
+
+\NewBibliographyString{separatum}
+\DefineBibliographyStrings{english}{separatum = {Pub.~as \latin{separatum}}}
+\DefineBibliographyStrings{german}{separatum = {Sonderdruck}}
+
+
+\NewBibliographyString{engtr}
+\DefineBibliographyStrings{english}{engtr = {Eng.~tr.}}
+\DefineBibliographyStrings{german}{engtr = {Eng.~Ãb.}}
+
+
+%\NewBibliographyString{alsoas}
+%\DefineBibliographyStrings{english}{alsoin = {Also pub.~in}}
+%\DefineBibliographyStrings{german}{alsoin = {Auch~in}}
+
+\DeclareFieldFormat{related:serialarticle}{#1}
+%\renewcommand*{\relateddelim}{%
+%  \iffieldequalstr{relatedtype}{serialarticle}
+%    {\addcomma\space}
+%    {\adddot\par\nobreak}}
+
+\newbibmacro*{related:serialarticle}[1]{%
+  \entrydata{#1}{%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \setunit{\addcolon\space}%
+  \iffieldundef{pages}
+    {}
+    {\setunit{\bibpagespunct}%
+     \printfield{pages}}}}
+
+\renewbibmacro*{booktitle}{%
+  \ifboolexpr{
+    test {\iffieldundef{booktitle}}
+    and
+    test {\iffieldundef{booksubtitle}}
+  }
+    {}
+    {\iffieldundef{crossref}
+      {\printtext[booktitle]{%
+         \printfield[titlecase]{booktitle}%
+         \setunit{\subtitlepunct}%
+         \printfield[titlecase]{booksubtitle}}}%
+      {\bibhyperref[\thefield{crossref}]{\printtext[booktitle]{%
+         \printfield[titlecase]{booktitle}%
+         \setunit{\subtitlepunct}%
+         \printfield[titlecase]{booksubtitle}}}}
+     \newunit}%
+  \printfield{booktitleaddon}}
+
+
+\renewcommand*{\relatedpunct}{\intitlepunct}
+
+% Works with biblatex + biber
+% Prints: Author’s (Year, postnote)
+% Example: \posscite[583]{Bohr1928} -> Bohr’s (1928, 583)
+
+% Keep your working single-entry \posscite
+\providecommand{\textapostrophe}{'} % fallback if textcomp not present
+
+\DeclareCiteCommand{\posscite}
+  {%
+    \usebibmacro{prenote}%
+  }
+  {%
+    \usebibmacro{citeindex}%
+    \ifnameundef{labelname}
+      {\printfield{shorthand}\textapostrophe s\xspace}
+      {\printnames{labelname}\textapostrophe s\xspace}%
+    (%
+      \usebibmacro{cite:labelyear+extrayear}%
+      \setunit{\addcomma\space}%
+      \usebibmacro{postnote}%
+    )%
+  }
+  {\multicitedelim}
+  {}
+
+% Multi-entry version: prints author’s once, then a single parenthesis with all years.
+% Example: \posscites{Bohr1931}{Bohr1932} -> Bohr’s (1931, 1932)
+%          \posscites[§3]{Bohr1931}[583]{Bohr1932} -> Bohr’s (1931, §3, 1932, 583)
+
+\DeclareCiteCommand{\possciteye}
+  {%
+    \usebibmacro{prenote}%
+  }
+  {%
+    \usebibmacro{citeindex}%
+    \iffirstcitekey
+      {%
+        \ifnameundef{labelname}
+          {\printfield{shorthand}}%
+          {\printnames{labelname}}%
+        \textapostrophe s\xspace(%
+        \usebibmacro{cite:labelyear+extrayear}%
+        \setunit{\addcomma\space}%
+        \usebibmacro{postnote}%
+      }{%
+        \addcomma\space
+        \usebibmacro{cite:labelyear+extrayear}%
+        \setunit{\addcomma\space}%
+        \usebibmacro{postnote}%
+      }%
+    \iflastcitekey{)}{}%
+  }
+  {\relax}
+  {}
+
+\DeclareMultiCiteCommand{\posscites}{\possciteye}{}
+
+
+
+
+
+
+%\newbibmacro*{cite}{%originalyear
+%  \iffieldundef{shorthand}
+%    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+%       {\usebibmacro{cite:label}%
+%        \setunit{\addspace}}
+%       {\printnames{labelname}%
+%        \setunit{\nameyeardelim}}%
+%     \iffieldundef{origyear}%
+%       {}%
+%       {\printfield[brackets]{origyear}%
+%        \setunit{\addspace}}%
+%     \usebibmacro{cite:labeldate+extradate}}
+%    {\usebibmacro{cite:shorthand}}}
+
+
+
+
+%\renewbibmacro*{volume+number}{%
+%  \printfield{volume}%
+%  \setunit*{\adddot}% DELETED
+%  \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace
+% \printtext[parens]{\printfield{number}}}
+
+%%%%POSSESSIVE Cite. 
+
+
