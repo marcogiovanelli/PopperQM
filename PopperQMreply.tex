@@ -5,9 +5,37 @@
 \newcommand{\RT}{Reviewer~\#2\xspace} 
 \newcommand{\RO}{Reviewer~\#1\xspace}
 
+\newcommand{\LdF}{\bt{Logik der Forschung}\xspace}
+\newcommand{\Lo}{\bt{Logik}\xspace}
+\newcommand{\KPA}[1]{KPA #1}
+\newcommand{\TE}{thought experiment\xspace}
+\newcommand{\IR}{indeterminacy relations\xspace}
+\newcommand{\UR}{uncertainty relations\xspace}
+\newcommand{\HR}{Heisenberg's relations\xspace}
+\newcommand{\Weis}{Weisskopf\xspace}
+\newcommand{\vW}{von Weizsäcker\xspace}
+\newcommand{\VW}{Von Weizsäcker\xspace}
+\newcommand{\CH}{coupling-hypothesis\xspace}
+\newcommand{\NW}{\jt{Die Naturwissenschaften}\xspace}
+\newcommand{\ERG}{\jt{Erg\"anzung}\xspace}
+
+\newcommand{\KH}{\german{Kopplungshypothese}\xspace}
+\newcommand{\GE}{\german{Gedankenexperiment}}
+\newcommand{\LF}[2]{\autocite[#1/#2]{Popper1935}}
+
+\newcommand{\pos}{\ensuremath{x}\xspace}
+\newcommand{\mom}{\ensuremath{p_x}\xspace}
+\newcommand{\pam}{\ensuremath{x} and \ensuremath{p_x}\xspace}
+
 
 \begin{document}
 \section*{Response to reviewers' comments}
+
+I thank the reviewers for their generally positive assessment of the paper and for their insightful and detailed comments on the manuscript.
+
+Each point raised in the reports has been addressed individually below. As requested by the Editor, the manuscript has been revised with an emphasis on improving clarity of expression and argumentative precision, rather than on substantive expansion.
+
+Following the journal’s guidelines, I have uploaded both a clean version of the manuscript and a version with tracked changes, in which all revisions are clearly indicated. Changes made solely to ensure conformity with the journal’s stylistic guidelines have not been marked, in order to avoid unnecessary clutter.
 
 \reviewersection
 
@@ -15,34 +43,120 @@
 
 \begin{point}
 The distinction between predictive and non-predictive measurements is introduced without really specifying what these terms mean precisely. Moreover, near the end of the paper there is also talk of non-prognostic measurements, which seem to mean the same thing as non-predictive, but this is not specified.
+\label{measurement}
 \end{point}
 
 \begin{reply}
-Non prognostic and non-predictive are indeed the same. I have forgot to update an early transation progniostic is more simular to the oriciala genra,.
+The terms \s{non-prognostic} and \s{non-predictive} are indeed intended to denote the same notion. The former reflects an early translation choice, corresponding to the German \s{nichtprognostisch}, which I inadvertently failed to update consistently in the final version. I have now standardized the terminology throughout the paper, using exclusively \s{predictive} and \s{non-predictive}, which are clearer and more idiomatic in English.
+
+
+I have therefore sought to clarify Popper’s usage of the terms \s{measurement}, \s{physical selection}, \s{predictive measurement}, and \s{non-predictive measurement}. Some confusion may nevertheless arise from the fact that Popper sometimes uses the term \s{measurement} to describe, for example, \vW’s momentum determination via the Doppler effect. This counts as a \s{measurement} insofar as it disturbs the momentum, yet it is \s{predictive} in the sense that it can be used as an initial condition. By contrast, Popper proposes to use \s{physical selection}, such as a velocity filter that allows only particles with the appropriate momentum to pass through (see also \ref{margenau}). In modern terms, both procedures would be regarded as functioning as \s{preparations}; see the added footnotes~$q$ and $y$. I think that this is an instance Popper's notion of \s{selection} does not align with Margenau's notion of \s{preparation}. See also \ref{margenau}.
+
+
+
+%
+%A \s{non-predictive measurement} amounts to a reconstruction of a past trajectory, combining a prior selection with a subsequent registration (for example, momentum followed by position). A \s{predictive measurement} amounts to a prediction of a future trajectory. According to Popper, for mainstream physicists \s{predictive measurements} ultimately always reduce to \s{physical selections} thus constrained by the \UR interpreted statistically. In this sense the latter also constraints the precision of \s{measurements}. Popper's aim was to decouple the two notions by constructing a setup capable of yielding a genuine \s{measurement}, that is, a \s{registration}, of both position \emph{and} momentum of a single particle with a precision higher than that allowed \UR as measurement restriction.
+
+
+%Also at the request of \RT, I have added clarifications at various points explicitly specifying the intended distinction between predictive and non-predictive measurements. I have also added footnote~$c$, which provides a brief glossary of Popper’s key terms: measurement, physical selection, predictive measurement, and non-predictive measurement. The ambiguity in Popper’s terminology arises from the fact that the notions of \s{predictive} and \s{non-predictive} measurement, unlike selection or measurement proper, do not denote independent operations, but rather combinations of selections and proper measurements.
+
+
+%The meaning of these terms can be clarified—at least approximately—by translating Popper’s terminology into modern equivalents. In the revised version, I have attempted to apply this \s{translation} more consistently, although Popper’s usage is not always fully coherent, at least as far as I can see.
+
+%The translation of the first two notions is comparatively straightforward, since each refers to an independent operation. By \s{measurement}, Popper typically means what would now be called a \s{registration}: a terminal act that produces a macroscopic record of an event. By \s{physical selection}, he refers to procedures that filter or condition an ensemble without producing such a record, corresponding at least approximately to what is now called \s{preparation} (see, however, \ref{margenau}).
+
+%The deeper ambiguity in Popper’s terminology arises with the notions of \s{predictive} and \s{non-predictive} measurement. I have now clarified that, unlike selection or measurement proper, neither of these denotes an independent operation. A \s{non-predictive measurement}, understood as a reconstruction of a past trajectory, necessarily involves the combination of a prior physical selection with a subsequent measurement. Because such retrospective reconstructions can appear to yield values sharper than those allowed by the \UR, Popper takes them to motivate the possibility of \s{predictive measurements} that would achieve an analogous precision for the future. Whereas mainstream physics treats \s{predictive measurements} as ultimately reducible to \s{physical selections}, Popper sought to disentangle the two notions. His aim was to show that a path reconstruction of an auxiliary system—whose inferred properties are then transferred to the primary system via a correlation law, typically a conservation principle—could be used to predict the outcome of a future arbitrarily sharp measurement in the sense of a registration, without an intervening physical selection of the system itself.
+
+%However, a \s{predictive measurement} is likewise not a standalone process. It requires 
+
+
+
+
+
+
+%
+
+
+
+
+
+%From the standpoint of modern \qm while non-predictive measurements—understood as retrospective path reconstructions—are admissible, predictive measurements in Popper’s sense are not. Within the formalism of \qm, a predictive measurement is a category mistake: any interaction that provides information usable for future predictions either constitutes a preparation (von Neumann) or at least presupposes one (Margenau). In either case, the resulting state assignment is subject to the \UR.
+
+
+
+
+
+%Popper's proposed \s{predictive measurement} is not a standalone physical process. Rather, it is a complex deduction that requires a \s{path reconstruction} of an auxiliary system, which is then mapped onto the primary system via a \s{correlation} (conservation) law. Because this reconstruction itself necessitates a prior \s{preparation} and a terminal \s{registration} of the auxiliary particle, the "precision" Popper claims to achieve is fundamentally bounded by the \IR of the initial setup. He attempts to treat a derivative inference—one that relies on the very constraints of quantum formalism—as a means to invalidate those same constraints.
+
+%Because this reconstruction itself necessitates a prior \s{preparation} and a terminal \s{registration} of the auxiliary particle, the "precision" Popper claims to achieve is fundamentally bounded by the \IR of the initial setup. He attempts to treat a derivative inference—one that relies on the very constraints of quantum formalism—as a means to invalidate those same constraints.
+
+
+
+
+%Popper’s error was the introduction of the \s{predictive measurement}, which he envisioned as a \s{registration} that yields predictive power without a corresponding \s{preparation}. In the formalism of \qm, this is a hybrid entity that does not exist; any interaction providing the information necessary for a future prediction necessarily functions as a physical selection (von Neumann) or at least presupposes a previous preparation (Margenau), thereby satisfying the \IR.
+
+
+
+
+
+
+
+
+%The terminology here is admittedly ambiguous, as there are two distinct senses in which a measurement may be termed \s{non-predictive.} First, there is the \s{reconstructed trajectory}—the path between the slit and the screen—which is a purely retrospective inference. While this reconstruction assigns precise values to the particle's past, these values cannot serve as initial conditions for future evolution. Second, there is the \s{terminal measurement} itself (e.g., the impact on a photographic screen). This measurement can be distructive. E.g. As an irreversible process, it concludes a trajectory rather than preparing a new one; it is \s{non-predictive} because the information it yields cannot be leveraged to select a further pure ensemble. 
+%
+%
+%
+%Popper appears to use the term \s{non-predictive measurement} primarily in the first sense of reconstructed trajectory. He called \s{terminal measurements} simply \s{measurements} the register results as opposed to a \s{physical selection.} that serve  select for predictions. Popper's error was the introduction of the category of \s{predictive destructive measurement}, which he characterized as: (a) a prediction about the future without a corresponding physical selection or preparation, and (b) that cannot be used to prepare a pure case. Within the formalism of \qm, no such hybrid entity exists; any measurement providing the information necessary for a future prediction necessarily functions as a physical selection or preparation. This is roughly what Weisskopf objected to him early on.
+%
+%In Popper’s setup, the \s{predictive terminal measurement} functions by reconstructing the trajectory of an auxiliary particle (the electron) to predict the terminal position and momentum of the primary particle (the photon) via conservation laws. This measurement is terminal in the sense that it cannot be used to select or prepare a further pure ensemble of photons possessing definite values for both variables. Popper’s central claim was that the uncertainty relations do not apply to such terminal predictive measurements.
+%
+%To maintain consistency with Popper’s vocabulary, we must distinguish between his different uses of the term "measurement." What he calls a \s{non-predictive measurement} corresponds to a \s{reconstructed trajectory}—a purely retrospective inference about a particle's past. By contrast, what he simply terms a \s{measurement} refers to an interaction that concludes an experimental trial (what Margenau would later call a \s{terminal measurement}). Popper's error was the introduction of a third category, the \s{predictive measurement}, which has no physical correspondence in \qm. He argued that the precision of a \s{measurement}—which he believed was not restricted by the \IR—could be used to make a prediction about a future state without the physical constraints inherent in a \s{physical selection} or preparation.
+%
+%Popper’s thesis was that one could perform a \s{terminal predictive measurement} that violates the uncertainty relations as limits on the precision of an individual measurement, without violating the statistical uncertainty relations as limits on the preparation of an ensemble. For Popper, the \IR were not \s{prohibitive} laws of nature regarding what can be known, but rather \s{statistical scatter relations} regarding the distribution of prepared states. By using an indirect terminal prediction, he argued he could assign precise values to a single particle that were finer than the \IR allows, while acknowledging that these results could not be used to select a new pure case that bypassed the statistical spread of the theory.
+
+\todo{Pauli measurement of the second kind}
+
 \end{reply}
+
+\begin{point}
+\label{margenau}
+The paper argues that both the claims by Jammer and by Margenau "fail to withstand critical scrutiny". In the case of Jammer, I see why this is the case: the chronology does not allow for Popper's thought experiments to have inspired EPR. In Margenau's case, however, it is not completely clear to me why Popper's distinction between physical selections and measurements could not have anticipated Margenau's distinction between preparation and measurement. While it is indeed the case, as the author shows, that there are some differences and that Popper's views were confused, there are also similarities, as the author points out (p. 10). Hence, one could very well claim, as Margenau did, that Popper's distinction did anticipate (aspects of) Margenau's.
+\end{point}
+
+\begin{reply}
+I agree with \RO that there are indeed some similarities between Popper’s distinction and Margenau’s later distinction between preparation and measurement, and I explicitly acknowledge these on p.~10. My claim, however, is not that Popper’s views bear \emph{no} resemblance to Margenau’s, but that this similarity is \emph{more superficial} than it is usually claimed in the literature (including by Margenau). The difference is reflected in the choice of terminology itself: Popper’s \s{selections} are intended to \emph{filter} an ensemble of particles already possessing a pre-assigned state, whereas Margenau’s \s{preparations} aim to actively \emph{produce} an ensemble in a specific new state. If Popper had realized that his selections were akin to Margenau's preparations, he would have realized that his \TE was a non-starter. Indeed, Popper’s successive revisions of the experimental set-up were meant to show that momentum selection does not \emph{prepare} the system in a new momentum eigenstate, but merely \emph{reveals} a preexisting momentum. See also \ref{measurement}
+\end{reply}
+
+
+%by treating it as a mere physical \s{selection} that leaves the statistical content of the ensemble untouched. Margenau’s notion of \s{preparation}, by contrast, is inseparable from a change in the statistical state of the system. For Popper, selections are introduced precisely so as to avoid any state reduction, whereas for Margenau preparation is constitutively a state-defining procedure. 
+
+
+%In the revised version I put more emphasis on that fact my interpretation challenges the more common reading according to which Popper’s distinction straightforwardly anticipates Margenau’s. Despite partial terminological or schematic similarities, the resemblance is ultimately superficial, since the underlying conceptual role assigned to preparation in the two cases is decisively different. 
+
+
+%Margenau insists that certain measurements are \s{destuctive}; that is, the system does not necessarily collapse into an eigenstate of the measured observable. However, Margenau denies the possibility of \s{predictive} terminal measurements in the absence of preparation. For Margenau, a terminal measurement concludes a physical process and provides information about the state at the moment of interaction, but it cannot, by itself, serve as the basis for future predictions. Popper's error lay in assuming that such terminal data could substitute for the physical selection required to establish an initial condition.
+
+%Popper’s fundamental error was the assumption that one could perform a \s{terminal %predictive measurement} without a corresponding preparation.
+
+
+
 
 
 
 \begin{point}
-- The paper argues that both the claims by Jammer and by Margenau "fail to withstand critical scrutiny". In the case of Jammer, I see why this is the case: the chronology does not allow for Popper's thought experiments to have inspired EPR. In Margenau's case, however, it is not completely clear to me why Popper's distinction between physical selections and measurements could not have anticipated Margenau's distinction between preparation and measurement. While it is indeed the case, as the author shows, that there are some differences and that Popper's views were confused, there are also similarities, as the author points out (p. 10). Hence, one could very well claim, as Margenau did, that Popper's distinction did anticipate (aspects of) Margenau's.
-- At the start of section 3 (p. 9), the author writes "Popper starts from the well-known fact" without stating explicitly where Popper does so. It would be good to specify this, given that there are quite a few texts by Popper discussed.
+At the start of section 3 (p. 9), the author writes "Popper starts from the well-known fact" without stating explicitly where Popper does so. It would be good to specify this, given that there are quite a few texts by Popper discussed.
 \end{point}
 
 \begin{reply}
-My point is that philsoca selection is  smilar but ultaimatle a mistandestadin. Bit I can ideed make the more clear. 
+I have now clarified the formulation to make explicit that this feature is shared by all of Popper’s presentations of quantum mechanics discussed in the paper, with particular reference to the more extensive treatment in the \textit{Logik}. The revised wording removes the ambiguity about the textual basis of the claim and avoids singling out an unspecified passage.
 \end{reply}
 
-
 \begin{point}
-This allows us to rephrase the two different interpretations (a) and (b) of equation (1) (given on p. 9) as follows:
-(a) the indeterminacy relations limit the degree of statistical homogeneity that can be achieved in the physical selection of an ensemble of identical systems;
-(b) the indeterminacy relations limit the precision of the measurement performed on a single system.
-This is very confusing, because by now we have already three different (a)-(b) enumerations that, moreover, seem not completely consistent: the last (a) listed here seems to equal (b) on p. 9 of the manuscript, and the last (b) listed here seems to equal (a) on p. 9.
-Moreover, the author then formulates Popper's program on the basis of these (a)-(b) as follows: "I (a) follows directly from the formalism; |I (b) does not logically follow from (a); III (b) follows from (a) only if one adds an additional hypothesis (c); IV the combined system (a) + (c) turns out to be contradictory" (p. 10). It is very difficult to disentangle what is going on here precisely. I would urge the author to rewrite this as a separate list, rather than as an enumeration in the text. I would also like to ask the author to be more consistent in their choice of enumeration symbols, and use distinct ones when required: e.g. (a)-(b), (i)-(ii), etc. Finally, if I am not mistaken, the author's I-IV distinguished here also appeared earlier (on p. 8, in the discussion of Weisskopf's reply to Popper). There, however, the author used (1), (1a), (1b), and (2). I think it would improve readability if the author were to use the same enumeration symbols throughout.
+- The discussion on pages 9-10 of Popper's views on the indeterminacy-relations is not completely lear. The main reason for this is that the author introduces several ways to distinguish different interpretations of these relations.
 \end{point}
 
 \begin{reply}
-
+I thank the referee for this helpful suggestion, which coincides with a concern I had myself. I have now reorganized the system of labels to improve readability. 
 \end{reply}
 
 
@@ -51,13 +165,40 @@ Moreover, the author then formulates Popper's program on the basis of these (a)-
 \end{point}
 
 \begin{reply}
+I agree that speaking of two predictive measurements was ambiguous, for the reasons explained in \ref{measurement}, I have rephrased the passage to state that past trajectories can be reconstructed from the combined data of a physical selection and a measurement, taken over the time interval between these two operations. In Section~1.1, I used Heisenberg’s experimental set-up as an example, involving the Doppler effect, which determines the particle’s momentum and can serve as an initial condition for future predictions. Indeed, Popper sometimes refers to this procedure as a \s{measurement}  since contrary to a \s{selection} by a filter, it does disturb the system, although is not a mere registration (see \ref{measurement} and \ref{margenau}).
+\end{reply}
+%He the combines with a subsequent position determination, such as one made via a photographic plate. When taken together, these two measurements retroactively fix the particle’s past trajectory. The resulting position--momentum assignment is therefore \s{non-predictive} in Heisenberg’s sense, as it cannot function as an initial condition for the particle’s future evolution.
 
+%One might object that the second position measurement is not genuinely predictive because the particle is not necessarily left in an exact eigenstate. However, the point at issue does not rely on this assumption. Even if the second measurement were fully predictive (for instance, another idealized position selection), the combination of the two would still yield a non-predictive result in Heisenberg’s sense: namely, a reconstruction of the particle’s past trajectory. Inferring the particle’s motion from its momentum at one time and its position at a later time—assuming no intervening interactions—remains an exercise in retrodiction without predictive significance for the future.
+
+
+
+\begin{point}
+- On p. 11, the author suggests in passing that Popper's interest in retrodictive measurements was connected to his more general philosophical views: "for Popper [...] the point is that if sharp past trajectory reconstructions were not possible, the frequency predictions of quantum mechanics could not be falsified, and the theory would therefore belong to the realm of 'metaphysics'. Without the possibility of reconstructing the past paths of particles, one could not subject the theory to empirical control". This is a very interesting point, especially given that, as the author points out, up until now Popper's thought experiment has been barely discussed in the literature about Young Popper. I would therefore like to ask the author to highlight this point more in the introduction of the paper. In that way, it will be clear that the paper's audience is not merely historians of quantum physics, but equally well historians of philosophy of science.
+\end{point}
+
+\begin{reply}
+Indeed, the paper is also intended to address historians of the philosophy of science, not only historians of quantum physics. Following the referee’s suggestion, I have presented the connection between Popper’s interest in retrodictive measurements and his broader philosophical concerns about falsifiability and empirical control already in the Introduction.
+\end{reply}
+
+\begin{point}
+- On p. 17, the author states that von Weiszacker argued that Popper did not see how non-predictive measurements "escape the indeterminacy relations since they are not physical measurements at all". This point has not been made before, and it would be good to include this in an explanation of how we are to see non-predictive (non-prognostic?) measurements.
+\end{point}
+
+\begin{reply}
+I thank the referee for this suggestion. I have added clarificatory remarks to better define \s{physical measurements} in that context. Von Weizsäcker understands a \s{proper} physical measurement as one that can serve as an initial condition to plug into dynamical laws for future predictions. By contrast for Popper seems to see \s{measurement} as in itself terminal. 
+\end{reply}
+
+\begin{point}
+- On p. 26, the author writes that "Popper was not misled by Heisenberg's notion of 'measurement', but by the notion of 'physical selection' he adopted". The 'he' here in this sentence is ambiguous, and could refer to both Popper or Heisenberg. Also, if the 'he' used here refers to Popper, the term 'adopted' seems quite ambiguous as well, given that it was Popper who, according to the author, introduced the term (whereas 'adopted' suggests that he took it over from someone else). I would like to ask the author to clarify this sentence.
+
+\end{point}
+
+\begin{reply}
+I have rephrased the sentence to eliminate any possible ambiguity in the pronoun reference and to clarify that the notion of \s{physical selection} was introduced and employed by Popper himself. I originally used the term \s{adopted} in the qualified sense that Popper \textit{committed himself} to this particular conception of \s{physical selection}; had he instead employed a notion closer to Margenau’s concept of \s{preparation}, the difficulty under discussion would not have arisen (see \ref{margenau}).
 \end{reply}
 
 
-- On p. 11, the author suggests in passing that Popper's interest in retrodictive measurements was connected to his more general philosophical views: "for Popper [...] the point is that if sharp past trajectory reconstructions were not possible, the frequency predictions of quantum mechanics could not be falsified, and the theory would therefore belong to the realm of 'metaphysics'. Without the possibility of reconstructing the past paths of particles, one could not subject the theory to empirical control". This is a very interesting point, especially given that, as the author points out, up until now Popper's thought experiment has been barely discussed in the literature about Young Popper. I would therefore like to ask the author to highlight this point more in the introduction of the paper. In that way, it will be clear that the paper's audience is not merely historians of quantum physics, but equally well historians of philosophy of science.
-- On p. 17, the author states that von Weiszacker argued that Popper did not see how non-predictive measurements "escape the indeterminacy relations since they are not physical measurements at all". This point has not been made before, and it would be good to include this in an explanation of how we are to see non-predictive (non-prognostic?) measurements.
-- On p. 26, the author writes that "Popper was not misled by Heisenberg's notion of 'measurement', but by the notion of 'physical selection' he adopted". The 'he' here in this sentence is ambiguous, and could refer to both Popper or Heisenberg. Also, if the 'he' used here refers to Popper, the term 'adopted' seems quite ambiguous as well, given that it was Popper who, according to the author, introduced the term (whereas 'adopted' suggests that he took it over from someone else). I would like to ask the author to clarify this sentence.
 
 
 
@@ -67,13 +208,13 @@ Moreover, the author then formulates Popper's program on the basis of these (a)-
 
 %The paper claims to identify and fill a lacuna in the scholarship on early Popper, namely, his participation in the early 1930s in debates over Heisenberg’s uncertainty relations with leading physicists from Heisenberg himself to Einstein. The debate focused on a series of thought experiments culminating in the famous EPR one. The actual lacuna isn’t any lack of attention to the episode, but the missing depth and detail of the analyses it has yielded, the narrowness of their focus and the dearth of their sources. 
 
-\begin{point}
-While ignoring more detailed analyses such as Redhead’s, the new analysis seeks to redress claims such as Jammer’s about the relevance of Popper’s arguments and examples to EPR, 
-\end{point}
-
-\begin{reply}
-
-\end{reply}
+%\begin{point}
+%While ignoring more detailed analyses such as Redhead’s, the new analysis seeks to redress claims such as Jammer’s about the relevance of Popper’s arguments and examples to EPR, 
+%\end{point}
+%
+%\begin{reply}
+%I have now given more prominence to Readhead's paper\todo{?}
+%\end{reply}
 
 
 
@@ -91,7 +232,7 @@ As a matter of presentation, the reader and the analysis could benefit from more
 \end{point}
 
 \begin{reply}
-
+\RO raised the same concern, and I therefore refer \RT to my reply to \ref{measurement} and \ref{margenau}.
 \end{reply}
 
 \begin{point}
@@ -99,21 +240,58 @@ One relative weakness of the paper, despite its considerable length, is the miss
 \end{point}
 
 \begin{reply}
+I thank the referee for this thoughtful suggestion. I was cautious about expanding this discussion further because the secondary literature itself is divided. Heisenberg, in particular, is often portrayed as a straightforward positivist but other interpreters have argued for a more nuanced reading\autocites{Beller1985}{Camilleri2009a}, suggesting that Heisenberg’s positivist rhetoric was at least partly strategic rather than programmatic. A similar situation holds for Schlick in the 1930s, although in this case the attribution of a more strictly verificationist stance with respect to the issues under discussion appears less contentious \autocite{Stoeltzner2008}. Given these historiographical uncertainties, I judged it preferable to describe Popper’s portrayals of these philosophical positions rather than to assess in detail how accurately they reflect what their proponents themselves maintained. For the latter, I have added some references to the secondary literature.
+
+I agree that a more extended discussion of the broader philosophical commitments of the actors involved would be of genuine interest. However, given the already considerable length of the paper, and in light of the editor’s request to focus revisions on clarity and argumentative precision rather than substantive expansion, I have not added a separate section devoted to broader philosophical contextualization. Instead, I have sought to make the relevant philosophical commitments more explicit at strategic points in the text where they bear directly on the technical discussion. I hope that these clarifications go some way toward addressing the referee’s concern while keeping the paper within reasonable bounds.
+
+%While I agree that a more extended discussion of the broader philosophical commitments of the actors involved would be of genuine interest, devoting an additional page or two to this issue seemed difficult to reconcile with the already considerable length of the paper. For this reason, I have limited myself to adding a small number of targeted remarks at relevant points, clarifying how the technical debates connect to wider epistemological concerns, especially in Popper’s case. I of course defer to the editor’s judgment on this matter.
 
 \end{reply}
 
 \begin{point}
-The same applies to Einstein’s evolution from determinism to realism and non-positivistic epistemology. The paper describes the exchanges with Heisenberg et al as ‘series of experimental conjectures and refutations’. But there’s no explicit discussion of the use of thought experiments within the framework of Popper’s realism and falsificationism in LSD. Nor is there any consideration of the place within Poppe’s philosophy of science of his philosophy of physics and engagement of physicists. Not does the paper take notice of the epistemological response to Heisenberg, Schlick and Bohr in chap IX, sect. 73, of failing to carry out their programs and assuming an inconsistent dual interpretation and, in the new, 1959, appendix XI, adopting a Kantian metaphysical epistemology.
+The paper describes the exchanges with Heisenberg et al as ‘series of experimental conjectures and refutations’. But there’s no explicit discussion of the use of thought experiments within the framework of Popper’s realism and falsificationism in LSD. Nor is there any consideration of the place within Poppe’s philosophy of science of his philosophy of physics and engagement of physicists. Not does the paper take notice of the epistemological response to Heisenberg, Schlick and Bohr in chap IX, sect. 73, of failing to carry out their programs and assuming an inconsistent dual interpretation and, in the new, 1959, appendix XI, adopting a Kantian metaphysical epistemology.
 \end{point}
+
+
+
 
 \begin{reply}
 
-\end{reply}
+I thank the referee for this thoughtful and challenging remark. I have strengthened the connection between Popper’s critique of QM and his falsificationist framework by adding a paragraph to the Introduction, as also suggested by \RO. With regard to a broader philosophical commitment to \emph{realism}, I am not convinced that it can be straightforwardly attributed to Popper in the period 1934--35. At this stage, his attack on QM seems primarily motivated by concerns about \emph{determinism} and the status of statistical laws (cf.~\S78), rather than by a mature realist program in the later sense of quantum mechanics without the observer. This latter emphasis, in my view, becomes prominent only after the war.
+
+I agree with the referee that Appendix~XI of the 1959 edition is highly relevant for understanding Popper’s retrospective reassessment of these issues, and I therefore discuss it explicitly in the conclusion. I now draw more extensively on Popper’s own distinction between \emph{apologetic} and genuinely \emph{critical} uses of thought experiments. While some commentators have described the epistemological stance articulated in Appendix~XI as Kantian, my analysis focuses more narrowly on Popper’s explicit attempt to attribute his \s{mistake} to Heisenberg's asymmetrical treatment of position and momentum measurement in his $\gamma$-ray thought experiment. The point I wish to emphasize is that this reconstruction is contradicted by the unpublished sources discussed in the paper. I hope this strikes an appropriate balance between acknowledging the broader philosophical context and keeping the paper focused on the specific historical and conceptual problem under investigation.
+
+%diagnosis of a hidden metaphysical commitment in the Copenhagen denial of particle trajectories, rather than on a systematic reconstruction of Popper’s later epistemology. 
+
+
+%I have insisted more on the relation between Popper's critique of \qm and falsificationism, as also requested by \RO, by adding a paragraph to the Introduction. I am not completely sure Popper's \s{realism} at this stage. In 1934-35 Popper seems to attack \qm from the point of view \s{determinism}: frequency law cannot be fundamental, never stop to search for precision laws (\S78). The issue of realism seems to appear after the war, where he insists on quantum mechanics without the observer. I agree with the referee that Appendix~XI is highly relevant in this context, and I discuss it explicitly in the conclusion. I now, draw more extensively on Popper’s distinction between what he characterized as an \emph{apologetic} and a genuinely \emph{critical} use of thought experiments. 
+\end{reply}.
 
 
 
 
+%However, I ultimately came to the conclusion that both Heisenberg's positivist rhetoric motivate Heisenberg's approach nor Popper's criticism of positivism is ultitaly the culprit of Popper's failed attempt. Popper's mistake was eminently due to a confusion about the very nature of what he called a physical section.
 
+
+
+%failed to carry out their own positivist or verificationist programs, 	realist when it suits physics, instrumentalist or positivist when facing foundational difficulties.
+
+%My aim in the paper was not to reconstruct Popper’s philosophy of physics in the broader framework of \emph{LSD}, but rather to show how these tensions emerge from Popper’s concrete engagement with contemporary quantum-mechanical debates. For this reason, I confined myself to indicating these issues where they directly bear on the historical argument, leaving a more systematic discussion of Popper’s evolving realism, falsificationism to more competent commentators.
+
+
+
+%Indeed, past trajectory cannot be verified, but they serve to falsify the prediction of the theory.  \cop{Popper ultimately agreed that, since such reconstructions cannot be \emph{verified}---that is, since no testable prediction can be derived from them---they pertain to the realm of \s{metaphysics}. As one might expect, however, for Popper the question in this form is ill-posed. The point is that if sharp past trajectory reconstructions were not possible, the frequency predictions of \qm could not be \emph{falsified}, and the theory would therefore belong to the realm of \s{metaphysics}. Without the possibility of reconstructing the past paths of particles, one could not subject the theory to empirical control \origg{Nachprüfung}. The latter is always, indeed, a comparison between the observed distribution of reconstructed paths and the predicted distribution.}\todo{check this}
+
+
+
+%On this basis, I highlight what appears to me to be a central paradox: Popper accuses Bohr of employing thought experiments in a apologetic or immunizing way against Einstein’s criticisms, yet Popper himself deploys structurally analogous thought experiments against Heisenberg. 
+
+
+
+
+\theendnotes
+
+%\printbibliography
 
 
 \end{document}

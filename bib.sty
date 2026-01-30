@@ -33,6 +33,15 @@
   url=false % We keep this as footnote but redirect the command
 ]{biblatex}
 
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usedriver
+    {\DeclareNameAlias{sortname}{default}}
+    {inbook}%
+  \usebibmacro{finentry}%
+}
+
 % Redirect the footnote command to endnote for the whole document
 \makeatletter
 \renewcommand{\mkbibfootnote}[1]{\endnote{#1}}
@@ -67,6 +76,30 @@
   }%
 }
 \makeatother
+
+
+
+
+\DeclareFieldFormat[book]{title}{%
+  \iffieldequalstr{hyphenation}{english}
+    {\mkbibemph{\MakeTitleCase{#1}}}
+    {\mkbibemph{#1}}%
+}
+
+\DeclareFieldFormat[book]{subtitle}{%
+  \iffieldequalstr{hyphenation}{english}
+    {\mkbibemph{\MakeTitleCase{#1}}}
+    {\mkbibemph{#1}}%
+}
+
+
+\DeclareFieldFormat[article]{title}{%
+  \iffieldequalstr{hyphenation}{english}
+    {\mkbibemph{\MakeTitleCase{#1}}}
+    {#1}%
+}
+
+
 
 %\usepackage[
 %  authordate,
@@ -232,8 +265,8 @@
 %\DeclareBibliographyAlias{proceedings}{article}
 %\DeclareBibliographyAlias{newspaper}{article}
 
-\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
-\DeclareFieldFormat{titleaddon}{\MakeSentenceCase*{#1}}
+%\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
+%\DeclareFieldFormat{titleaddon}{\MakeSentenceCase*{#1}}
 
 %\DefineBibliographyStrings{english}{%
 %nodate = {},

@@ -1,0 +1,562 @@
+\DeclareDocumentCommand\letterb{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 an #2,  \gershort\formatdate{#3}{#4}{#5}: }%
+{#1 an #2,  \gershort\formatdate{#3}{#4}{#5}; \cite[#6]{#7}:}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterbeamer{mmmmmoo}{#1 to #2,  \short\formatdate{#3}{#4}{#5}}
+\DeclareDocumentCommand\letterbeamerp{mmmmmoo}{(#1 to #2,  \short\formatdate{#3}{#4}{#5})}
+
+
+\DeclareDocumentCommand\letterbeamerg{mmmmmoo}{#1 an #2,  \short\formatdate{#3}{#4}{#5}}
+\DeclareDocumentCommand\letterbeamergp{mmmmmoo}{(#1 an #2,  \short\formatdate{#3}{#4}{#5})}
+
+
+\DeclareDocumentCommand\letterc{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \gershort\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \gershort\formatdate{#3}{#4}{#5}; \cite[#6]{#7}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterd{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \short\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \short\formatdate{#3}{#4}{#5}; \cite[#6]{#7}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterdp{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \short\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \short\formatdate{#3}{#4}{#5}; \cite[#6]{#7})}%
+} %
+\unspace}
+
+
+
+%\IfNoValueTF {#2}%
+%   {\blockquote{#1}, #2 }%
+%   {%
+%  \IfNoValueTF {#3}%
+%  {\blockquote[{\cite[#3]{#4}}]{#1}}
+%   %
+%{\IfNoValueTF {#5}%
+%{\blockquote[{\cite[#3]{#4}}]{#1} \orig{#2}}%
+%{\blockquote[{\cite[#3]{#4}; tr.~\cite*[#5]{#6}}]{#1} \orig{#2}}%
+%}
+%}  
+
+
+\DeclareDocumentCommand\letterg{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 an #2,  \gershort\formatdate{#3}{#4}{#5}; }%
+{#1 an #2,  \gershort\formatdate{#3}{#4}{#5}; \cite[#6]{#7}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterg{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 an #2,  \gershort\formatdate{#3}{#4}{#5}; }%
+{#1 an #2,  \gershort\formatdate{#3}{#4}{#5}; \cite[#6]{#7}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letter{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{#7}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letteri{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 a #2,  \short\formatdate{#3}{#4}{#5}}%
+{#1 a #2,  \short\formatdate{#3}{#4}{#5}; \cite[#6]{#7}}%
+} %
+\unspace}
+
+
+
+
+\DeclareDocumentCommand\lettera{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{#7}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterp{mmmmmoo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{#7}}%
+} %
+\unspace)}
+
+
+
+\DeclareDocumentCommand\letterunp{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; #6}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterunpp{mmmmmo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; #6}%
+} %
+\unspace)}
+
+
+\DeclareDocumentCommand\letterundp{mmo}{%
+{(\IfNoValueTF {#3}%
+{#1 to #2}%
+{#1 to #2; #3}%
+} %
+\unspace)}
+
+\DeclareDocumentCommand\letterund{mmo}{%
+{\IfNoValueTF {#3}%
+{#1 to #2}%
+{#1 to #2; #3}%
+} %
+\unspace}
+
+
+
+
+
+\DeclareDocumentCommand\letteruy{mmoo}{%
+{\IfNoValueTF {#3}%
+{#1 to #2}%
+{#1 to #2, #3}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letteruyp{mmoo}{%
+{\IfNoValueTF {#3}%
+{(#1 to #2)}%
+{(#1 to #2, #3)}%
+} %
+\unspace}
+
+
+
+
+
+
+
+
+\DeclareDocumentCommand\letteru{mmoo}{%
+{\IfNoValueTF {#3}%
+{#1 to #2,~undated}%
+{#1 to #2,~undated; \cite[#3]{#4}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterup{mmoo}{%
+{(\IfNoValueTF {#3}%
+{#1 to #2,~undated}%
+{#1 to #2,~undated; \cite[#3]{#4}}%
+} %
+\unspace)}
+
+
+\DeclareDocumentCommand\lettercpae{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VD{#6}{#7}]{CPAE}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\lettercpaep{mmmmmoo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VD{#6}{#7}]{CPAE}}%
+} %
+\unspace)}
+
+
+
+\DeclareDocumentCommand\lettercpaea{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VA{#6}{#7}]{CPAE}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\lettercpaeap{mmmmmoo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VA{#6}{#7}]{CPAE}}%
+} %
+\unspace)}
+
+
+%\DeclareDocumentCommand\lettercpae{mmmmmoo}{%
+%{\IfNoValueTF {#6}%
+%{ #1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+%{ #1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VD{#6}{#7}]{CPAE}}%
+%} %
+%\unspace}
+%
+%
+%\DeclareDocumentCommand\lettercpaep{mmmmmoo}{%
+%{(\IfNoValueTF {#6}%
+%{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+%{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VD{#6}{#7}]{CPAE}}%
+%} %
+%\unspace)}
+
+
+
+
+
+\DeclareDocumentCommand\lettereb{mmmo}{%
+{\IfNoValueTF {#4}%
+{Einstein to Besso,  \shortmoam\formatdate{#1}{#2}{#3}}%
+{Einstein to Besso,  \shortmoam\formatdate{#1}{#2}{#3}; \cite[Doc.\ #4]{Einstein1972}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterbe{mmmo}{%
+{\IfNoValueTF {#4}%
+{Besso to Einstein,  \shortmoam\formatdate{#1}{#2}{#3}}%
+{Besso to Einstein,  \shortmoam\formatdate{#1}{#2}{#3}; \cite[Doc.\ #4]{Einstein1972}}%
+} %
+\unspace}
+
+
+
+\DeclareDocumentCommand\letterebp{mmmo}{%
+{\IfNoValueTF {#4}%
+{(Einstein to Besso, \shortmoam\formatdate{#1}{#2}{#3})}%
+{(Einstein to Besso, \shortmoam\formatdate{#1}{#2}{#3}; \cite[Doc.\ #4]{Einstein1972})}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterbep{mmmo}{%
+{\IfNoValueTF {#4}%
+{(Besso to Einstein,  \shortmoam\formatdate{#1}{#2}{#3})}%
+{(Besso to Einstein,  \shortmoam\formatdate{#1}{#2}{#3}; \cite[Doc.\ #4]{Einstein1972})}%
+} %
+\unspace}
+
+
+
+\DeclareDocumentCommand\letterspeziali{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Doc.\ #6]{Einstein1972}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterspezialip{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Doc.\ #6]{Einstein1972})}%
+} %
+\unspace}
+
+
+
+\DeclareDocumentCommand\lettervp{mmmmmo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; #6}%
+} %
+\unspace)}
+
+
+%\DeclareDocumentCommand\lettercpae{mmmmmoo}{%
+%{\IfNoValueTF {#6}%
+%{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+%{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VD{#6}{#7}]{CPAE}}%
+%} %
+%\unspace}
+
+
+
+
+\DeclareDocumentCommand\letterschrod{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Doc.\ #6]{ESBW}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterschrodp{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Doc.\ #6]{ESBW})}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterpauli{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Doc.\ #6]{WPWB}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterpaulip{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Doc.\ #6]{WPWB})}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letteras{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VD{1}{#6}]{ASWB}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterasp{mmmmmo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VD{1}{#6}]{ASWB}}%
+} %
+\unspace)}
+
+
+
+%%%%%
+
+\DeclareDocumentCommand\letterhr{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{HR}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterhrp{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{HR})}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\lettersa{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite{SA}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\lettersap{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite{SA})}%
+} %
+\unspace}
+
+
+
+
+
+%%%%%%
+
+
+
+
+
+\DeclareDocumentCommand\letterlora{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Vol.\ 1, Doc.\ #6]{SCHAL}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterlorap{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Vol.\ 1, Doc.\ #6]{SCHAL})}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterlorb{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Vol.\ 2, Doc.\ #6]{SCHAL}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterlorbp{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Vol.\ 2, Doc.\ #6]{SCHAL})}%
+} %
+\unspace}
+
+
+
+\DeclareDocumentCommand\letterlor{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Vol.\ 2, Doc.\ #6]{SCHAL}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterlorp{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Vol.\ 2, Doc.\ #6]{SCHAL})}%
+} %
+\unspace}
+
+
+
+
+
+\DeclareDocumentCommand\letterborn{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Doc.\ #6]{Born1969}}%
+} %
+\unspace}
+
+\DeclareDocumentCommand\letterbornp{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5})}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[Doc.\ #6]{Born1969})}%
+} %
+\unspace}
+
+
+%\newcommand{\citetp}[1]{\citetitle{#1} \parencite{#1}\xspace}
+
+\newcommand{\CZA}[1]{\cite[A408/#1]{CZA}\xspace}
+\newcommand{\CZAp}[1]{\citep[A408/#1]{CZA}\xspace}
+
+\DeclareDocumentCommand\letterczap{mmmmmo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[A408/#6]{CZA}}%
+} %
+\unspace)}
+
+\DeclareDocumentCommand\lettercza{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[A408/#6]{CZA}}%
+} %
+\unspace}
+
+
+
+\DeclareDocumentCommand\letteremlfp{mmmmmo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{EMLF}}%
+} %
+\unspace)}
+
+\DeclareDocumentCommand\letteremlf{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{EMLF}}%
+} %
+\unspace}
+
+
+
+\DeclareDocumentCommand\letteraeap{mmmmmo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{EA}}%
+} %
+\unspace)}
+
+\DeclareDocumentCommand\letteraea{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{EA}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\lettercpaeabsp{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{(#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VA{#6}{#7}]{CPAE}})%
+} %
+\unspace}
+
+\DeclareDocumentCommand\lettercpaeabs{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[\VA{#6}{#7}]{CPAE}}%
+} %
+\unspace}
+
+
+
+
+\DeclareDocumentCommand\letterc{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; cit.~in~\cite[#6]{#7}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\lettercd{mmmmmoo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \gershort\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \gershort\formatdate{#3}{#4}{#5}; cit.~in~\cite[#6]{#7}}%
+} %
+\unspace}
+
+
+
+\NewDocumentCommand\qn{mmo}{\blockquote[{\cite[025-05-10, #3]{HR}}]{#1} \orig{#2}\xspace}
+
+\NewDocumentCommand\qnh{mmo}{\blockquote[{\cite[025-05-10, #3]{HR}}]{#1} \hide{#2}\xspace}
+
+\NewDocumentCommand\qaut{mmoo}{%
+\blockquote[{\cite[#3]{Einstein1946-06-01}; tr. \cite*[#4]{Einstein1949}}]{#1} \hide{#2} \unspace}
+
+
+\NewDocumentCommand\qa{mmoo}{\blockquote[{\cite[#3]{Reichenbach1928}; tr.~\cite*[041-2101, #4]{HR}}]{#1} \orig{#2}\xspace}
+\NewDocumentCommand\qah{mmoo}{\blockquote[{\cite[#3]{Reichenbach1928}; tr.~\cite*[041-2101, #4]{HR}}]{#1} \hide{#2}\xspace}
+
+
+
+\DeclareDocumentCommand\letterKPA{mmmmmo}{%
+{\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{KPA}}%
+} %
+\unspace}
+
+
+\DeclareDocumentCommand\letterKPAp{mmmmmoo}{%
+{(\IfNoValueTF {#6}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}}%
+{#1 to #2,  \shortmoam\formatdate{#3}{#4}{#5}; \cite[#6]{KPA}}%
+} %
+\unspace)}
+
+
+
+
+

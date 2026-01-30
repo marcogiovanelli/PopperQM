@@ -5,39 +5,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-%% Start of 'ignore natbib' hack
-%\let\protect\relax
-%\let\bibhang\relax
-%\let\citename\relax
-%\let\bibfont\relax
-%\let\Citeauthor\relax
-%\let\textcite\relax
-%\let\citetext\relax
-%\let\Citet\relax
-%\let\Citep\relax
-%\let\Citealp\relax
-%\let\Citealt\relax
-%\let\Citep\relax
-%\let\citet\relax
-%\let\citep\relax
-%\let\citealp\relax
-%\let\citealt\relax
-%\let\citep\relax
-%\let\citefullauthor\relax
-%\let\defcitealias\relax
-%\expandafter\let\csname ver@natbib.sty\endcsname\relax
-%\expandafter\let\csname c@author\endcsname\relax
-%
-
-%\usepackage[notes,natbib,authordate,isbn=false,backend=biber,bibencoding=Cp1254,sorting=nymdt,url=false,doi=false,isbn=false,cmslos=false]{biblatex-chicago}  
-
-%
-%
-%\setlength\bibitemsep{0cpt}
-
-
-
 \begin{filecontents}{biblatex-dm.cfg}
 \DeclareDatamodelEntrytypes{sb}
 \DeclareDatamodelEntrytypes{aea}
@@ -50,85 +17,173 @@
 %\DeclareDatamodelFields[type=field,datatype=literal]{jotiaon}
 
 
+%\usepackage[xref=true,sorting=nyt,idemtracker=true,style=footnote-dw,backend=biber,editionstring=true,nopublisher=true,pageref=true,origfieldsformat=brackets,doi=false,shorthandibid=false,annotation=true]{biblatex}
+
+\usepackage{bigfoot}
+\DeclareNewFootnote{Ex}[alph] 
+\usepackage{endnotes}
+
+\usepackage[
+  backend=biber,
+  autopunct=true,
+  style=verbose-note,
+  citetracker=true,
+  autocite=footnote,
+  doi=false,
+  url=false % We keep this as footnote but redirect the command
+]{biblatex}
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usedriver
+    {\DeclareNameAlias{sortname}{default}}
+    {inbook}%
+  \usebibmacro{finentry}%
+}
+
+% Redirect the footnote command to endnote for the whole document
+\makeatletter
+\renewcommand{\mkbibfootnote}[1]{\endnote{#1}}
+\makeatother
+
+\DefineBibliographyStrings{english}{
+  seenote = {ref\adddot},
+}
+
+\makeatletter
+% Anchor the label at the first citation
+\AtEveryCitekey{%
+  \ifcsname r@note:\thefield{entrykey}\endcsname
+    % do nothing if label already exists
+  \else
+    \label{note:\thefield{entrykey}}%
+  \fi
+}
+
+\renewbibmacro*{cite:short}{%
+  \printnames{labelname}%
+  \setunit*{\addcomma\space}%
+  \printfield[citetitle]{labeltitle}%
+  \setunit*{\addspace}%
+  \printtext[parens]{%
+    \bibstring{seenote}\addspace
+    \ifcsname r@note:\thefield{entrykey}\endcsname
+      {\ref*{note:\thefield{entrykey}}}%
+    \else
+      {\textbf{??}}%
+    \fi
+  }%
+}
+\makeatother
 
 
 
 
+\DeclareFieldFormat[book]{title}{%
+  \iffieldequalstr{hyphenation}{english}
+    {\mkbibemph{\MakeTitleCase{#1}}}
+    {\mkbibemph{#1}}%
+}
 
-%\DeclareDatamodelFields[type=field,datatype=literal]{journaltitleaddon}
-%\DeclareDatamodelEntryfields[sb]{journaltitleaddon}
-%\DeclareFieldFormat{journaltitleaddon}{#1}
+\DeclareFieldFormat[book]{subtitle}{%
+  \iffieldequalstr{hyphenation}{english}
+    {\mkbibemph{\MakeTitleCase{#1}}}
+    {\mkbibemph{#1}}%
+}
 
+
+\DeclareFieldFormat[article]{title}{%
+  \iffieldequalstr{hyphenation}{english}
+    {\mkbibemph{\MakeTitleCase{#1}}}
+    {#1}%
+}
 
 
 
 %\usepackage[
-%               %style=chicago,
-%               date=year,
-%%               datelabel=yearonly,
-%                %natbib=true,
-%                %giveninits=true,
-%		%style=numeric,
-%		%style=authoryear-comp,
-%		style=chicago-authordate,
-%		bibencoding=utf8,
-%		url=true,
-%		doi=false,
-%		isbn=false,
-%		%mergedate=true,
-%		maxbibnames=3,
-%		maxcitenames=3,
-%		ibidtracker=true, 
-%		idemtracker=true,
-%		%uniquelist=1,
-%		%autolang=other,
-%		%sorting=none
-%		sorting=nyt,
-%		indexing=true,
-%		%uniquename=false,
-%		%dashed=false
-%		mincrossrefs=50
-%		]{biblatex}
+%  authordate,
+%  backend=biber,
+%  bibencoding=utf8,
+%  cmslos=false, 
+%  backref=false,
+%  shorthandfull,
+%  ibidtracker=context, % or 'constrict' if you prefer stricter context matching
+%  doi=false,
+%  isbn=false,
+%  giveninits=false,
+%  uniquename=false,
+%  minbibnames=1,
+%  maxbibnames=2,
+%  citereset=section,
+%date=year
+%]{biblatex-chicago}
 
 
 
-%\usepackage[authordate,backend=biber,bibencoding=utf8,cmslos=false,shorthandfull,noibid,ibidtracker=false,autocite=plain,doi=false,isbn=false,]{biblatex-chicago}
-%citestyle=authortitle-icomp
-\usepackage[citestyle=authortitle-icomp,bibstyle=authortitle,backend=biber,bibencoding=utf8,doi=false,isbn=false,singletitle,dashed=no,ibidtracker=constrict]{biblatex}
+%\usepackage[authordate,backend=biber,bibencoding=utf8,cmslos=false,shorthandfull,ibidtracker=true,doi=false,isbn=false,giveninits=false,uniquename=false,minbibnames =1,ibidtracker=constrict,maxbibnames=2,citereset=section]{biblatex-chicago}
 
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map{
-      \step[fieldset=shorthand, null]
-      \step[fieldsource=options,match={skipbib=true},replace={skipbib=false}]
-    }
-  }
-}
+%,noibid,
+%\DeclareSourcemap{
+%  \maps[datatype=bibtex]{
+%    \map{
+%      \step[fieldsource=entrykey, match=ASWB,fieldset=shorthand, null]
+%      \step[fieldsource=options,match={skipbib=true},replace={skipbib=false}]
+%    }
+%  }
+%}
 
-\renewbibmacro*{cite:ibid}{{}}
-\renewcommand*{\multicitedelim}{\addsemicolon\space}
-\renewcommand*{\autocite}{\cite}
- 
+
+
+%\DeclareSourcemap{
+%  \maps[datatype=bibtex]{
+%    \map{
+%      \step[fieldset=shorthand, null]
+%      \step[fieldsource=options,match={skipbib=true},replace={skipbib=false}]
+%    }
+%  }
+%}
+
 
 \setlength{\bibitemsep}{0em}
 \DeclareFieldFormat{postnote}{#1}% no postnote prefix in "normal" citation commands
 \DeclareFieldFormat{multipostnote}{#1}% no postnote prefix in "multicite" commands
-\DeclareFieldFormat{pages}{#1}
+%\DeclareFieldFormat{pages}{#1}
 
-\renewcommand*{\compcitedelim}{\addcomma\addspace}
-\renewcommand*{\postnotedelim}{\addcomma\addspace}
-\renewcommand*{\multicitedelim}{\addcomma\space}
-\renewcommand*{\textcitedelim}{\addcomma\addspace}
-\renewcommand*{\nameyeardelim}{\addcomma\addspace}
+%\renewcommand*{\compcitedelim}{\addsemicolon\addspace}
+%\renewcommand*{\postnotedelim}{\addcomma\addspace}
+%\renewcommand*{\multicitedelim}{\addsemicolon\space}
+%\renewcommand*{\textcitedelim}{\addcomma\addspace}
+%\renewcommand*{\nameyeardelim}{\addcomma\addspace}
 
-\DeclareDelimFormat{postnotedelim}{\addcomma\space}
-\DeclareFieldFormat{postnote}{#1}
-\DeclareDelimFormat{multipostnotedelim}{\addcomma\space}
-\DeclareDelimFormat{compcitedelim}{\addcomma\space}
-\DeclareDelimFormat{multicitedelim}{\addcomma\space}
-\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
+%\DeclareDelimFormat{postnotedelim}{\addcomma\space}
+%\DeclareFieldFormat{postnote}{#1}
+%\DeclareDelimFormat{multipostnotedelim}{\addcomma\space}
+%\DeclareDelimFormat{compcitedelim}{\addcomma\space}
+%\DeclareDelimFormat{multicitedelim}{\addcomma\space}
+%\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
 
 
+%\renewbibmacro*{textcite}{% 
+%\ifnameundef{labelname} 
+%{\iffieldundef{shorthand} 
+%{\usebibmacro{cite:label}% 
+%\setunit{% 
+%\global\booltrue{cbx:parens}% 
+%\addspace\bibopenparen}% 
+%\ifnumequal{\value{citecount}}{1} 
+%{\usebibmacro{prenote}} 
+%{}% 
+%\usebibmacro{cite:labelyear+extrayear}} 
+%{\usebibmacro{cite:shorthand}}} 
+%{\printnames{labelname}% 
+%\setunit{% 
+%\global\booltrue{cbx:parens}% 
+%\addspace\bibopenparen}% 
+%\ifnumequal{\value{citecount}}{1} 
+%{\usebibmacro{prenote}} 
+%{}% 
+%\usebibmacro{citeyear}}}
 
 \DeclareLabeldate{%
   \field{date}
@@ -173,34 +228,11 @@
 }
 
 
-%\DeclareIndexNameFormat{default}{
-% \nameparts{#1}%
-%     \usebibmacro{index:name}{\index}
-%       {\namepartfamily}
-%       {\namepartgiven}
-%%     {\namepartprefix}
-%%     {\namepartsuffix}
-%       }
-    
-
-%\DeclareNameFormat[default]{labelname}{%
-%       }
-
-
 \renewbibmacro*{citeindex}{%
 \ifciteindex
 {\indexnames{labelname}}%
 {}}
 
-
-
-%\makeatletter
-%\renewbibmacro*{bibindex}{%
-%  \ifbibindex
-%    {\def\do##1{\indexnames{##1}}%
-%     \abx@donames}
-%    {}}
-%\makeatletter
 
 \renewbibmacro*{bibindex}{%
 \ifbibindex
@@ -218,72 +250,9 @@
   andothers ={et\addabbrvspace al\adddot},
 }
 
-
-%\makeatletter 
-%\renewbibmacro*{textcite}{% 
-%  \iffieldequals{namehash}{\cbx@lasthash} 
-%    {\iffieldundef{shorthand} 
-%       {\ifthenelse{\iffieldequals{labeldate}{\cbx@lastyear}\AND 
-%                    \(\value{multicitecount}=0\OR\iffieldundef{postnote}\)} 
-%          {\setunit{\addcomma}% 
-%           \usebibmacro{cite:extrayear}} 
-%          {\setunit{\compcitedelim}% 
-%           \usebibmacro{cite:labeldate+extradate}% 
-%           \savefield{labeldate}{\cbx@lastyear}}} 
-%       {\setunit{\compcitedelim}% 
-%        \usebibmacro{cite:shorthand}% 
-%        \global\undef\cbx@lastyear}} 
-%    {\ifnameundef{labelname} 
-%       {\iffieldundef{shorthand} 
-%          {\usebibmacro{cite:label}% 
-%           \setunit{% 
-%             \global\booltrue{cbx:parens}% 
-%             \addspace\bibopenparen}% 
-%           \ifnumequal{\value{citecount}}{1} 
-%             {\usebibmacro{prenote}} 
-%             {}% 
-%           \usebibmacro{cite:labeldate+extradate}} 
-%          {\usebibmacro{cite:shorthand}}} 
-%       {\printnames{labelname}% 
-%        \setunit{% 
-%          \global\booltrue{cbx:parens}% 
-%          \addspace\bibopenparen}% 
-%        \ifnumequal{\value{citecount}}{1} 
-%          {\usebibmacro{prenote}} 
-%          {}% 
-%        \iffieldundef{shorthand} 
-%          {\iffieldundef{labelyear} 
-%             {\usebibmacro{cite:label}} 
-%             {\usebibmacro{cite:labeldate+extradate}}% 
-%           \savefield{labelyear}{\cbx@lastyear}} 
-%          {\usebibmacro{cite:shorthand}% 
-%           \global\undef\cbx@lastyear}}% 
-%     \stepcounter{textcitecount}% 
-%     \savefield{namehash}{\cbx@lasthash}}% 
-%  \setunit{% 
-%    \ifbool{cbx:parens} 
-%      {\bibcloseparen\global\boolfalse{cbx:parens}} 
-%      {}% 
-%    \textcitedelim}} 
-%\makeatother
-
-
-
-%\usepackage[
-%                backend=biber,
-%                %style=chicago,
-%                 natbib=true,
-%		%style=numeric,
-%		%authordate,
-%		style=chicago-authordate,
-%		bibencoding=Cp1254,
-%		url=false,
-%		doi=false,
-%		isbn=false,
-%		%autolang=other,
-%		%sorting=none
-%		sorting=nymdt,
-%		]{biblatex}
+\renewbibmacro*{cite:shorthand}{%
+  \printtext[bibhyperref]{\printfield{shorthand}}%
+  \usebibmacro{cite:reinit}}
 
 \usepackage{xpatch}
 
@@ -291,12 +260,13 @@
 \DeclareBibliographyAlias{philsci}{electronic}
 \DeclareBibliographyAlias{stanford}{incollection}
 \DeclareBibliographyAlias{incollectionr}{incollection}
-\DeclareBibliographyAlias{inbookr}{inbook}
+%\DeclareBibliographyAlias{inbookr}{inbook}
 %\DeclareBibliographyAlias{inbook}{incollection}
 %\DeclareBibliographyAlias{proceedings}{article}
 %\DeclareBibliographyAlias{newspaper}{article}
-\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
-\DeclareFieldFormat{titleaddon}{\MakeSentenceCase*{#1}}
+
+%\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
+%\DeclareFieldFormat{titleaddon}{\MakeSentenceCase*{#1}}
 
 %\DefineBibliographyStrings{english}{%
 %nodate = {},
@@ -307,26 +277,6 @@
 
 %\DeclareFieldFormat{titlecase}{\MakeTitleCase*{#1}}
 %\DeclareFieldFormat{titleaddon}{\MakeTitleCase*{#1}}
-
-
-%\renewbibmacro*{booktitle}{%
-%  \ifboolexpr{
-%    test {\iffieldundef{booktitle}}
-%    and
-%    test {\iffieldundef{booksubtitle}}
-%  }
-%    {}
-%    {\iffieldundef{crossref}
-%      {\printtext[booktitle]{%
-%         \printfield[titlecase]{booktitle}%
-%         \setunit{\subtitlepunct}%
-%         \printfield[titlecase]{booksubtitle}}}%
-%      {\bibhyperref[\thefield{crossref}]{\printtext[booktitle]{%
-%         \printfield[titlecase]{booktitle}%
-%         \setunit{\subtitlepunct}%
-%         \printfield[titlecase]{booksubtitle}}}}
-%     \newunit}%
-%  \printfield{booktitleaddon}}
 
 
 \newbibmacro*{jtao}{\printfield{journaltitleaddon}}
@@ -576,7 +526,6 @@
 }	
 		
  %end sorting		
-
 \addbibresource{biblatex.bib}
 \addbibresource{cvb.bib}
 \addbibresource{cvbconf.bib}
@@ -584,6 +533,18 @@
 
 \renewcommand*{\bibfont}{\footnotesize}
 
+
+\DeclareCiteCommand{\citefulltitle}
+{\boolfalse{citetracker}%
+\boolfalse{pagetracker}%
+\usebibmacro{prenote}}
+{\indexfield{indextitle}%
+\printtext[citetitle]{%
+\printfield[noformat]{title}%
+\iffieldundef{subtitle}{}{\subtitlepunct}%
+\printfield[noformat]{subtitle}}}%
+{\multicitedelim}
+{\usebibmacro{postnote}}
 
 
 
@@ -601,20 +562,12 @@
   {\multicitedelim}
   {\usebibmacro{postnote}}
   
-  
 %  \DeclareCiteCommand{\citepages}
 %  {\usebibmacro{prenote}}
 %  {\usebibmacro{citeindex}%
 %    \usebibmacro{pages}}
 %  {\multicitedelim}
 %  {\usebibmacro{postnote}}
-  
-  \DeclareCiteCommand{\citepages}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \usebibmacro{pages}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
 
 \DeclareCiteCommand{\citebooktitle}
   {\usebibmacro{prenote}}
@@ -659,10 +612,10 @@
   {\usebibmacro{postnote}}
   
 \usepackage{xargs} 
-%\newcommandx{\citepages}[2][1=]{#1}
-%\newcommandx{\citepagesp}[2][1=]{(#1)}
-%\newcommandx{\citepa}[2][1=]{#1}
-%\newcommandx{\citepap}[2][1=]{(#1)}
+\newcommandx{\citepages}[2][1=]{#1}
+\newcommandx{\citepagesp}[2][1=]{(#1)}
+\newcommandx{\citepa}[2][1=]{#1}
+\newcommandx{\citepap}[2][1=]{(#1)}
 
 \makeatletter
 \let\passifpages\@firstofone
@@ -672,6 +625,8 @@
 \newcommand*{\me}{\IfLanguageName{ngerman}{\passifpages{; meine Hervorhebung}}{\passifpages{; my emphasis}}}
 
 \newcommand*{\sm}{\IfLanguageName{ngerman}{\passifpages{; meine Hervorhebung}}{\passifpages{; slightly modified}}}
+
+\newcommand{\tm}{\passifpages{; translation modified}}	
 
 \DefineBibliographyStrings{american}{sequens={f.},sequentes={ff.}}
 % Einfügen mit \psq bzw. \psqq
@@ -765,6 +720,7 @@
 %{\addcomma\space}
 %    {\adddot\par}
 
+
 \NewBibliographyString{reprintin}
 \DefineBibliographyStrings{english}{reprintin = {Repr.~in}}
 \DefineBibliographyStrings{german}{reprintin = {Nachdr.~in}}
@@ -826,6 +782,62 @@
 
 \renewcommand*{\relatedpunct}{\intitlepunct}
 
+% Works with biblatex + biber
+% Prints: Author’s (Year, postnote)
+% Example: \posscite[583]{Bohr1928} -> Bohr’s (1928, 583)
+
+% Keep your working single-entry \posscite
+\providecommand{\textapostrophe}{'} % fallback if textcomp not present
+
+\DeclareCiteCommand{\posscite}
+  {%
+    \usebibmacro{prenote}%
+  }
+  {%
+    \usebibmacro{citeindex}%
+    \ifnameundef{labelname}
+      {\printfield{shorthand}\textapostrophe s\xspace}
+      {\printnames{labelname}\textapostrophe s\xspace}%
+    (%
+      \usebibmacro{cite:labelyear+extrayear}%
+      \setunit{\addcomma\space}%
+      \usebibmacro{postnote}%
+    )%
+  }
+  {\multicitedelim}
+  {}
+
+% Multi-entry version: prints author’s once, then a single parenthesis with all years.
+% Example: \posscites{Bohr1931}{Bohr1932} -> Bohr’s (1931, 1932)
+%          \posscites[§3]{Bohr1931}[583]{Bohr1932} -> Bohr’s (1931, §3, 1932, 583)
+
+\DeclareCiteCommand{\possciteye}
+  {%
+    \usebibmacro{prenote}%
+  }
+  {%
+    \usebibmacro{citeindex}%
+    \iffirstcitekey
+      {%
+        \ifnameundef{labelname}
+          {\printfield{shorthand}}%
+          {\printnames{labelname}}%
+        \textapostrophe s\xspace(%
+        \usebibmacro{cite:labelyear+extrayear}%
+        \setunit{\addcomma\space}%
+        \usebibmacro{postnote}%
+      }{%
+        \addcomma\space
+        \usebibmacro{cite:labelyear+extrayear}%
+        \setunit{\addcomma\space}%
+        \usebibmacro{postnote}%
+      }%
+    \iflastcitekey{)}{}%
+  }
+  {\relax}
+  {}
+
+\DeclareMultiCiteCommand{\posscites}{\possciteye}{}
 
 
 
@@ -855,6 +867,6 @@
 %  \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace
 % \printtext[parens]{\printfield{number}}}
 
-
+%%%%POSSESSIVE Cite. 
 
 
